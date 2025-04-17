@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/containers/nav-bar/NavBar";
-import { ThemeProvider } from "@/providers/ThemeProvider";
+import ThemeProvider from "@/providers/ThemeProvider";
+import FavouriteContextProvider from "@/providers/FavouriteContextProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,7 +42,11 @@ export default function RootLayout({
             <main className="py-8">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                  <div className="lg:col-span-12">{children}</div>
+                  <div className="lg:col-span-12">
+                    <FavouriteContextProvider>
+                      {children}
+                    </FavouriteContextProvider>
+                  </div>
                 </div>
               </div>
             </main>
