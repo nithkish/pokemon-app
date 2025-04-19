@@ -1,16 +1,14 @@
 "use client";
-import { createContext, useState, ReactNode, useEffect } from "react";
+import { FavouriteContextType, Favourites } from "@/types/favourites";
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useEffect,
+  useContext,
+} from "react";
 
-interface Favourite {
-  favourites: number[];
-}
-
-interface FavouriteContextType extends Favourite {
-  addFavourite: (id: number) => void;
-  removeFavourite: (id: number) => void;
-}
-
-const initFavourite: Favourite = {
+const initFavourite: Favourites = {
   favourites: [],
 };
 
@@ -28,8 +26,12 @@ export const FavouriteContext = createContext<FavouriteContextType>({
 // across page reloads and sessions
 // It also provides functions to add and remove favourites
 // from the state
-const FavouriteContextProvider = ({ children }: { children: ReactNode }) => {
-  const [favourites, setFavourites] = useState<Favourite>(initFavourite);
+export const FavouriteContextProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
+  const [favourites, setFavourites] = useState<Favourites>(initFavourite);
 
   useEffect(() => {
     // Check if the favourites are in localStorage
@@ -37,7 +39,7 @@ const FavouriteContextProvider = ({ children }: { children: ReactNode }) => {
     // Additional check to avoid parsing undefined string during the initial stage
     const favourites = localStorage.getItem("favourites");
     if (favourites && favourites !== "undefined") {
-      setFavourites(JSON.parse(favourites) as Favourite);
+      setFavourites(JSON.parse(favourites) as Favourites);
     }
   }, []);
 
@@ -66,5 +68,6 @@ const FavouriteContextProvider = ({ children }: { children: ReactNode }) => {
     </FavouriteContext.Provider>
   );
 };
-
-export default FavouriteContextProvider;
+export const useFavouritesContext = () => {
+  return useContext(FavouriteContext);
+};

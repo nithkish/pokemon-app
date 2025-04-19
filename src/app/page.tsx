@@ -1,5 +1,7 @@
-import Image from "next/image";
+"use client";
+
+import PokemonList from "@/sections/pokemon-list/PokemonList";
 
 export default function Home() {
-  return <div> Home</div>;
+  return <PokemonList />;
 }
