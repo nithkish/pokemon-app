@@ -1,7 +1,8 @@
+import Favourites from "@/sections/favourites/Favourites";
 import React from "react";
 
 function page() {
-  return <div>Favourites</div>;
+  return <Favourites />;
 }
 
 export default page;

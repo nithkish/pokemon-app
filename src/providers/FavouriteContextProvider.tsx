@@ -1,4 +1,5 @@
 "use client";
+import { useFavouritesData } from "@/hooks/useFavouritesData";
 import { FavouriteContextType, Favourites } from "@/types/favourites";
 import {
   createContext,
@@ -8,6 +9,7 @@ import {
   useContext,
 } from "react";
 
+// This is the initial state of the favourites
 const initFavourite: Favourites = {
   favourites: [],
 };
@@ -19,6 +21,9 @@ export const FavouriteContext = createContext<FavouriteContextType>({
   ...initFavourite,
   addFavourite: () => {},
   removeFavourite: () => {},
+  favouritesListDetails: [],
+  loading: false,
+  error: "",
 });
 
 // This component manages the state of the favourites
@@ -31,43 +36,79 @@ export const FavouriteContextProvider = ({
 }: {
   children: ReactNode;
 }) => {
+  // Initialize the state with initial empty array
   const [favourites, setFavourites] = useState<Favourites>(initFavourite);
 
+  //Flag to identify whether favourites are initalized
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Get data from API to be added from the Context using custom hook
+  const { favouritesListDetails, error, loading } =
+    useFavouritesData(favourites);
+
+  // Check if the favourites are in localStorage
+  // If they are, parse them and set the state
+  // Additional check to avoid parsing undefined string during the initial stage
   useEffect(() => {
-    // Check if the favourites are in localStorage
-    // If they are, parse them and set the state
-    // Additional check to avoid parsing undefined string during the initial stage
     const favourites = localStorage.getItem("favourites");
     if (favourites && favourites !== "undefined") {
       setFavourites(JSON.parse(favourites) as Favourites);
     }
+    // Set the flag to true post initalization
+    setIsInitialized(true);
   }, []);
 
+  // Whenever the favourites state changes, update localStorage
+  // This will persist the favourites across page reloads
+  // and sessions
+  // This will only run after the initial render
+  // to avoid unnecessary updates to localStorage
+  // and to avoid parsing undefined string during the initial stage
   useEffect(() => {
-    localStorage.setItem("favourites", JSON.stringify(favourites));
-    console.log(favourites);
+    // set values only post initialization
+    if (isInitialized)
+      localStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
 
-  const addFavourite = (id: number) =>
+  // Function to add a favourite to the state
+  // This function takes an id as a parameter
+  // and adds it to the favourites array in the state
+  const addFavourite = (id: number) => {
     setFavourites((prev) => ({
       ...prev,
       favourites: [...prev.favourites, id],
     }));
+  };
 
-  const removeFavourite = (id: number) =>
+  // Function to remove a favourite from the state
+  // This function takes an id as a parameter
+  // and removes it from the favourites array in the state
+  const removeFavourite = (id: number) => {
     setFavourites((prev) => ({
       ...prev,
       favourites: prev.favourites.filter((favId) => favId !== id),
     }));
+  };
 
+  // Return the context provider with the state and functions
+  // This will provide the favourites and functions to the components that need it
   return (
     <FavouriteContext.Provider
-      value={{ ...favourites, addFavourite, removeFavourite }}
+      value={{
+        ...favourites,
+        addFavourite,
+        removeFavourite,
+        favouritesListDetails,
+        error,
+        loading,
+      }}
     >
       {children}
     </FavouriteContext.Provider>
   );
 };
+
+// Custom hook to use the favourites context
 export const useFavouritesContext = () => {
   return useContext(FavouriteContext);
 };

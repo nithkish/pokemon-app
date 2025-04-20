@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 import { GlobalContextType } from "@/types/global";
 import { usePokemonData } from "@/hooks/usePokemonData";
 
@@ -19,6 +13,7 @@ const GlobalContext = createContext<GlobalContextType>({
   loading: false,
   error: "",
   maxPage: 10,
+  setPokemonListDetails: () => {},
 });
 
 export const GlobalContextProvider = ({
@@ -34,6 +29,7 @@ export const GlobalContextProvider = ({
     loading,
     error,
     maxPage,
+    setPokemonListDetails,
   } = usePokemonData(currentPage);
 
   return (
@@ -47,6 +43,7 @@ export const GlobalContextProvider = ({
         loading,
         error,
         maxPage,
+        setPokemonListDetails,
       }}
     >
       {children}

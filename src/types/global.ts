@@ -9,4 +9,9 @@ export interface GlobalContextType {
   loading: boolean;
   error: string | null;
   maxPage: number;
+  setPokemonListDetails: React.Dispatch<React.SetStateAction<PokemonDetails[]>>;
+  // activePokemon: PokemonDetails | undefined;
+  // setActivePokemon: React.Dispatch<
+  //   React.SetStateAction<PokemonDetails | undefined>
+  // >;
 }

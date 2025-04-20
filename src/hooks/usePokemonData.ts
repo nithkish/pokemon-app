@@ -95,6 +95,7 @@ export const usePokemonData = (currentPage: number) => {
   return {
     pokemonList,
     pokemonListDetails,
+    setPokemonListDetails,
     allPokemons,
     loading,
     error,
