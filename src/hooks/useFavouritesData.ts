@@ -2,16 +2,16 @@ import { BASE_API_URL } from "@/constants/api";
 import { Favourites } from "@/types/favourites";
 import { PokemonDetails } from "@/types/pokemon";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export const useFavouritesData = (favourites: Favourites) => {
+export const useFavouritesData = () => {
   const [favouritesListDetails, setFavouritesListDetails] = useState<
     PokemonDetails[]
   >([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchPokemonDetails = async () => {
+  const fetchPokemonDetails = async (favourites: Favourites) => {
     setLoading(true);
     try {
       setError(null);
@@ -32,17 +32,27 @@ export const useFavouritesData = (favourites: Favourites) => {
     }
   };
 
-  useEffect(() => {
-    if (favourites.favourites && favourites.favourites.length > 0) {
-      fetchPokemonDetails();
-    } else {
-      setFavouritesListDetails([]);
+  const fetchPokemonDetailsById = async (id: number) => {
+    setLoading(true);
+    try {
+      setError(null);
+      const res = await axios.get(`${BASE_API_URL}/pokemon/${id}`);
+      setFavouritesListDetails((prev) => [...prev, res.data]);
+      setLoading(false);
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data.message || "Unknown error");
+      } else {
+        setError("An unexpected error occurred");
+      }
     }
-  }, [favourites]);
+  };
 
   return {
     favouritesListDetails,
     loading,
     error,
+    fetchPokemonDetailsById,
+    fetchPokemonDetails,
   };
 };

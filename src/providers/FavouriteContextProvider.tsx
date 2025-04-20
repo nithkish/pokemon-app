@@ -30,7 +30,6 @@ export const FavouriteContext = createContext<FavouriteContextType>({
 // It uses localStorage to persist the favourites
 // across page reloads and sessions
 // It also provides functions to add and remove favourites
-// from the state
 export const FavouriteContextProvider = ({
   children,
 }: {
@@ -42,17 +41,24 @@ export const FavouriteContextProvider = ({
   //Flag to identify whether favourites are initalized
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Get data from API to be added from the Context using custom hook
-  const { favouritesListDetails, error, loading } =
-    useFavouritesData(favourites);
+  // Get data to be added from the Context and fetch methods using custom hook
+  const {
+    favouritesListDetails,
+    error,
+    loading,
+    fetchPokemonDetailsById,
+    fetchPokemonDetails,
+  } = useFavouritesData();
 
   // Check if the favourites are in localStorage
   // If they are, parse them and set the state
+  // Also fetch initial Pokemon Details of favourite Pokemons
   // Additional check to avoid parsing undefined string during the initial stage
   useEffect(() => {
     const favourites = localStorage.getItem("favourites");
     if (favourites && favourites !== "undefined") {
       setFavourites(JSON.parse(favourites) as Favourites);
+      fetchPokemonDetails(JSON.parse(favourites) as Favourites);
     }
     // Set the flag to true post initalization
     setIsInitialized(true);
@@ -73,11 +79,13 @@ export const FavouriteContextProvider = ({
   // Function to add a favourite to the state
   // This function takes an id as a parameter
   // and adds it to the favourites array in the state
+  // Fetch the details into the context of newly added favourites
   const addFavourite = (id: number) => {
     setFavourites((prev) => ({
       ...prev,
       favourites: [...prev.favourites, id],
     }));
+    fetchPokemonDetailsById(id);
   };
 
   // Function to remove a favourite from the state
