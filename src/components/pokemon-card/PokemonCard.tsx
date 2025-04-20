@@ -20,11 +20,18 @@ function PokemonCard({ pokemon }: PokemonCardProps) {
   };
 
   return (
-    <Card className="bg-zinc-950 dark:bg-white" onClick={handleClick}>
+    <Card
+      className="bg-zinc-950 dark:bg-white"
+      onClick={handleClick}
+      data-testid={"pokemon-card"}
+      aria-label={pokemon?.name}
+    >
       <CardContent>
         <div className="flex justify-center">
           <Image
-            src={pokemon?.sprites?.other?.home?.front_default}
+            src={
+              pokemon?.sprites?.other?.home?.front_default || "/pokeball.png"
+            }
             alt="pokemon image"
             width={150}
             height={150}

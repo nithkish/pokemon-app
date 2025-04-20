@@ -1,6 +1,7 @@
+"use client";
 import ErrorScreen from "@/components/error-screen/ErrorScreen";
-import { ListSkeleton } from "@/components/list-skeleton/ListSkeleton";
-import { PaginationComponent } from "@/components/pagination/Pagination";
+import ListSkeleton from "@/components/list-skeleton/ListSkeleton";
+import PaginationComponent from "@/components/pagination/Pagination";
 import PokemonCard from "@/components/pokemon-card/PokemonCard";
 import { useGlobalContext } from "@/providers/GlobalContextProvider";
 

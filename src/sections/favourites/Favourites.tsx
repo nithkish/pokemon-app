@@ -1,6 +1,6 @@
 "use client";
 import ErrorScreen from "@/components/error-screen/ErrorScreen";
-import { ListSkeleton } from "@/components/list-skeleton/ListSkeleton";
+import ListSkeleton from "@/components/list-skeleton/ListSkeleton";
 import NoFavourites from "@/components/no-favourites/NoFavourites";
 import PokemonCard from "@/components/pokemon-card/PokemonCard";
 import { useFavouritesContext } from "@/providers/FavouriteContextProvider";

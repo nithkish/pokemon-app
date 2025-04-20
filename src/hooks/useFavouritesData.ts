@@ -22,13 +22,14 @@ export const useFavouritesData = () => {
         })
       );
       setFavouritesListDetails(details);
-      setLoading(false);
     } catch (err) {
       if (axios.isAxiosError(err)) {
         setError(err.response?.data.message || "Unknown error");
       } else {
         setError("An unexpected error occurred");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -38,13 +39,14 @@ export const useFavouritesData = () => {
       setError(null);
       const res = await axios.get(`${BASE_API_URL}/pokemon/${id}`);
       setFavouritesListDetails((prev) => [...prev, res.data]);
-      setLoading(false);
     } catch (err) {
       if (axios.isAxiosError(err)) {
         setError(err.response?.data.message || "Unknown error");
       } else {
         setError("An unexpected error occurred");
       }
+    } finally {
+      setLoading(false);
     }
   };
 

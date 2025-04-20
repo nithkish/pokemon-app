@@ -8,6 +8,15 @@ interface BaseStatsCardProps {
 }
 
 function BaseStatsCard({ stats }: BaseStatsCardProps) {
+  if (!stats || stats.length === 0) {
+    return (
+      <CardWrapper header={"Base Statistics"}>
+        <div className="flex flex-col gap-2">
+          <p>No stats available</p>
+        </div>
+      </CardWrapper>
+    );
+  }
   return (
     <CardWrapper header={"Base Statistics"}>
       <div className="flex flex-col gap-2">

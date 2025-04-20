@@ -18,8 +18,14 @@ export default function ToggleTheme() {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       aria-label="Light/Dark mode button"
     >
-      <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <SunIcon
+        className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+        data-testid="sun-icon"
+      />
+      <MoonIcon
+        className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+        data-testid="moon-icon"
+      />
       {/* This span is visually hidden but provides an accessible label for screen readers */}
       {/* The "sr-only" class hides the text visually but keeps it accessible */}
       <span className="sr-only">Toggle Dark/Light theme</span>

@@ -22,8 +22,8 @@ export function PaginationComponent({ pageCount }: PaginationProps) {
           />
         </PaginationItem>
         <PaginationItem>
-          <span className="p-2 font-semibold text-gray-500">
-            Page {currentPage}
+          <span className="p-2 mx-5 font-bold text-gray-500 dark:text-white">
+            {currentPage}
           </span>
         </PaginationItem>
         <PaginationItem>
@@ -37,3 +37,5 @@ export function PaginationComponent({ pageCount }: PaginationProps) {
     </Pagination>
   );
 }
+
+export default PaginationComponent;

@@ -1,9 +1,9 @@
 import { HomeIcon, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import ToggleTheme from "../toggle-theme/ToggleTheme";
+import ToggleTheme from "@/components/toggle-theme/ToggleTheme";
 
-async function NavButtons() {
+export function NavButtons() {
   // Define an array of navigation buttons with their properties
   // This array can be easily extended to add more buttons in the future
   // Each button has a name, icon, and href (link)

@@ -42,9 +42,6 @@ export type PokemonDetails = {
       home: {
         front_default: string;
       };
-      showdown: {
-        front_default: string;
-      };
     };
   };
   stats: Stats[];

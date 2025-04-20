@@ -55,7 +55,6 @@ export const usePokemonData = (currentPage: number) => {
   // fetch details during home screen load to get access to images
   const fetchPokemonDetails = async () => {
     setLoading(true);
-
     try {
       setError(null);
       const details = await Promise.all(
@@ -65,9 +64,6 @@ export const usePokemonData = (currentPage: number) => {
           return res.data;
         })
       );
-
-      setLoading(false);
-
       setPokemonListDetails(details);
     } catch (err) {
       if (axios.isAxiosError(err)) {
@@ -75,6 +71,8 @@ export const usePokemonData = (currentPage: number) => {
       } else {
         setError("An unexpected error occurred");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
