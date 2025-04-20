@@ -17,6 +17,7 @@ import TypesCard from "@/components/types-card/TypesCard";
 import ImageCard from "@/components/image-card/ImageCard";
 import ErrorScreen from "@/components/error-screen/ErrorScreen";
 import { useFavouritesContext } from "@/providers/FavouriteContextProvider";
+import { uniqBy } from "lodash";
 
 interface PokemonDetailsProps {
   id: number;
@@ -26,10 +27,10 @@ function PokemonDetails({ id }: PokemonDetailsProps) {
   const { pokemonListDetails } = useGlobalContext();
   const { favouritesListDetails } = useFavouritesContext();
 
-  const pokemonDetails = [
-    ...pokemonListDetails,
-    ...favouritesListDetails,
-  ]?.find((pokemon) => pokemon.id === Number(id));
+  const pokemonDetails = uniqBy(
+    [...pokemonListDetails, ...favouritesListDetails],
+    "id"
+  )?.find((pokemon) => pokemon.id === Number(id));
 
   if (!pokemonDetails) {
     return <ErrorScreen />;
