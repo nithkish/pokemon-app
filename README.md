@@ -1,6 +1,8 @@
 # Pokémon App
 
-This is a Pokémon App project that allows users to explore and interact with Pokémon data. Below is a comprehensive overview of the project, including the file structure, descriptions of each file and folder, and detailed instructions for setup and usage.
+This is a Pokémon App project that allows users to browse Pokémons. The App allows users to add favourite and read additional details of Pokemon. The App is responsive and accessible. From the technical point of view, it is developed in a way it is easy to scale, following the SOLID principles.
+
+Below is a comprehensive overview of the project, including the file structure, descriptions of each file and folder, and detailed instructions for setup and usage.
 
 ---
 
@@ -11,11 +13,16 @@ This is a Pokémon App project that allows users to explore and interact with Po
    - [Root Directory](#root-directory)
    - [`src/` Directory](#src-directory)
    - [`public/` Directory](#public-directory)
+   - [`__tests__/` Directory](#__tests__-directory)
 3. [Getting Started](#getting-started)
    - [Prerequisites](#prerequisites)
    - [Installation](#installation)
    - [Running the App](#running-the-app)
-4. [Features](#features)
+4. [Tech Stack](#tech-stack)
+   - [Details](#details)
+   - [Dependencies](#dependencies)
+   - [Dev Dependencies](#dev-dependencies)
+5. [Features](#features)
 
 ---
 
@@ -35,8 +42,8 @@ pokemon-app/
 │   ├── __mockdata__/        # Mock data used in tests
 ├── src/                      # Main source code of the application
 │   ├── actions/             # Contains action files for different pages
-│   │   ├── HomePage.js      # Actions related to the Home Page
-│   │   └── DetailsPage.js   # Actions related to the Details Page
+│   │   ├── get-pokemons.js  # Contains function to get pokemon list data
+│   │   └── get-pokemons-by-id.js # Contains function to get pokemon details by respective id
 │   ├── app/                 # Application-level files and configurations
 │   │   ├── favourites/      # Favourites-related functionality
 │   │   ├── fonts/           # Font assets
@@ -73,99 +80,97 @@ pokemon-app/
 ├── package.json             # Project metadata and dependencies
 ├── package-lock.json        # Dependency lock file
 └── node_modules/            # Installed dependencies
+└── jest.config.ts           # Unit test configuration
+└── jest.setup.ts            # Unit test setup
+└── tailwind.config.ts       # tailwind configuration
+└── tsconfig.json            # typescript configuration
+└── next.config.mjs          # nextjs configuration
 ```
 
 This structure ensures a clean separation of concerns, making the project easy to navigate and maintain.
-
-```
-pokemon-app/
-├── README.md
-├── __tests__/
-|   ├── unit/
-|   |   ├── actions
-|   |   ├── components
-|   |   ├── hooks
-|   |   └── sections
-|   ├── __mockdata__/
-├── src/
-│   ├── actions/
-│   │   ├── HomePage.js
-│   │   └── DetailsPage.js
-│   ├── app/
-│   │   ├── favourites
-│   │   ├── fonts
-│   │   ├── pokemon/[id]
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   ├── components/
-│   │   ├── ui
-│   │   ├── ...
-│   │   └── ...
-│   ├── constants/
-│   │   ├── api.ts
-│   │   └── colors.ts
-│   ├── hooks/
-│   │   ├── useFavouritesData.ts
-│   │   └── usePokemonData.ts
-│   ├── lib/
-│   │   └── utils.ts
-│   ├── providers/
-│   │   ├── FavouriteContextProvider.tsx
-│   │   ├── GlobalContextProvider.tsx
-│   │   └── ThemeProvider.tsx
-│   ├── sections/
-│   │   ├── NavBar
-│   │   ├── PokemonList
-│   │   ├── PokemonDetails
-│   │   └── Favourites
-│   ├── types/
-│   │   ├── favourites.ts
-│   │   ├── global.ts
-│   │   ├── pagination.ts
-│   │   └── pokemon.ts
-├── public/
-├── package.json
-├── package-lock.json
-└── node_modules/
-```
-
----
 
 ## Description of Files and Folders
 
 ### Root Directory
 
-- **README.md**: This file provides an overview of the project, including its purpose, setup instructions, and file structure.
-- **package.json**: Contains metadata about the project, including dependencies, scripts, and project configuration.
-- **package-lock.json**: Automatically generated file that locks the versions of dependencies for consistent installs.
-- **node_modules/**: Directory containing all installed dependencies. This folder is automatically generated when dependencies are installed.
+- **README.md**: Provides an overview of the project, including its purpose, setup instructions, and file structure.
+- **package.json**: Contains metadata about the project, such as dependencies, scripts, and configuration.
+- **package-lock.json**: Locks the versions of dependencies to ensure consistent installations across environments.
+- **node_modules/**: Automatically generated folder containing all installed dependencies.
+- **jest.config.ts**: Configuration file for Jest, the testing framework.
+- **jest.setup.ts**: Setup file for Jest to configure the testing environment.
+- **tailwind.config.ts**: Configuration file for Tailwind CSS.
+- **tsconfig.json**: TypeScript configuration file.
+- **next.config.mjs**: Configuration file for the Next.js framework.
 
 ### `src/` Directory
 
-This folder contains the main source code for the application.
+This folder contains the main source code for the application, organized into subdirectories for better modularity and maintainability.
 
-- **components/**: Contains reusable UI components.
+- **actions/**: Contains functions for fetching Pokémon data.
 
-  - **Header.js**: Component for the app's header, which typically includes navigation or branding.
-  - **Footer.js**: Component for the app's footer, which may include copyright information or links.
-  - **PokemonCard.js**: Component for displaying individual Pokémon details, such as name, image, and stats.
+  - **get-pokemons.js**: Fetches the list of Pokémon.
+  - **get-pokemons-by-id.js**: Fetches details of a specific Pokémon by its ID.
 
-- **pages/**: Contains the main pages of the app.
+- **app/**: Contains application-level files and configurations.
 
-  - **HomePage.js**: The landing page that lists Pokémon in a grid or list format.
-  - **DetailsPage.js**: A detailed view of a selected Pokémon, showing additional information like abilities, type, and stats.
+  - **favourites/**: Manages functionality related to Pokémon favourites.
+  - **fonts/**: Stores font assets used in the app.
+  - **pokemon/[id]/**: Dynamic route for displaying Pokémon details.
+  - **layout.tsx**: Defines the layout structure of the app.
+  - **page.tsx**: Main page component.
 
-- **App.js**: The root component that defines the app's structure, including routing between pages.
-- **index.js**: The entry point of the application that renders the app into the DOM.
+- **components/**: Houses reusable UI components.
+
+  - **ui/**: Contains UI-specific components, such as buttons and cards.
+  - **/**: Contains other atomic components which are used as building blocks for sections.
+
+- **constants/**: Stores application-wide constants.
+
+  - **api.ts**: API endpoint related constants.
+  - **colors.ts**: Color palette constants for mapping type of pokemon.
+
+- **hooks/**: Custom React hooks for managing state and fetching data.
+
+  - **useFavouritesData.ts**: Manages favourites-related data.
+  - **usePokemonData.ts**: Manages Pokémon List and details data.
+
+- **lib/**: Utility functions for common operations.
+
+  - **utils.ts**: General-purpose utility functions.
+
+- **providers/**: Context providers for global state management.
+
+  - **FavouriteContextProvider.tsx**: Context for managing favourites.
+  - **GlobalContextProvider.tsx**: Provides global state across the app.
+  - **ThemeProvider.tsx**: Manages theming for the app.
+
+- **sections/**: Contains sections of the app, each representing a specific feature or page.
+
+  - **NavBar/**: Navigation bar section.
+  - **PokemonList/**: Section displaying a list of Pokémon.
+  - **PokemonDetails/**: Section for detailed Pokémon information.
+  - **Favourites/**: Section for displaying favourite Pokémons.
+
+- **types/**: TypeScript type definitions for the app.
+  - **favourites.ts**: Types related to favourites.
+  - **global.ts**: Global type definitions.
+  - **pagination.ts**: Types for pagination functionality.
+  - **pokemon.ts**: Types related to Pokémon data.
 
 ### `public/` Directory
 
-This folder contains static assets that are served directly to the browser.
+This folder contains static assets served directly to the browser.
 
-- **index.html**: The main HTML file that serves as the entry point for the app. It includes the root `<div>` where the React app is mounted.
-- **favicon.ico**: The app's favicon, displayed in the browser tab.
+Logos and images in .png format is stored.
 
----
+### `__tests__/` Directory
+
+This folder contains all unit tests and its associated mockdatas.
+
+The `unit` folder contains all the test suites, with folders namely components, hooks, sections, actions containing respective unit tests for the functions and components.
+
+The `__mockdata__` folder contains mock values for unit tests to make use of.
 
 ## Getting Started
 
@@ -180,7 +185,7 @@ Ensure you have the following installed on your system:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/nithkish/pokemon-app.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -201,7 +206,62 @@ npm start
 
 The app will be available at `http://localhost:3000` in your browser.
 
----
+For local devlepment, run:
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:3000` in your browser.
+
+### Running Tests in the App
+
+To run the whole test suite run:
+
+```bash
+npm run test
+```
+
+## Tech Stack
+
+### Details
+
+create-next-app is used to generate this app, with Typescript for writing codes, tailwind for styling along with shadcn reusable components. Shadcn uses radix-ui.
+
+LocalStorage have been made use of along with other libraries.The Pokémon App leverages the following libraries and frameworks:
+
+### Dependencies
+
+- **@radix-ui/react-progress**: ^1.1.4
+- **@radix-ui/react-slot**: ^1.2.0
+- **axios**: ^1.8.4
+- **class-variance-authority**: ^0.7.1
+- **clsx**: ^2.1.1
+- **lodash**: ^4.17.21
+- **lucide-react**: ^0.488.0
+- **next**: 14.2.25
+- **next-themes**: ^0.4.6
+- **react**: ^18
+- **react-dom**: ^18
+- **tailwind-merge**: ^3.2.0
+- **tailwindcss-animate**: ^1.0.7
+
+### Dev Dependencies
+
+- **@testing-library/dom**: ^10.4.0
+- **@testing-library/jest-dom**: ^6.6.3
+- **@testing-library/react**: ^16.3.0
+- **@types/jest**: ^29.5.14
+- **@types/lodash**: ^4.17.16
+- **@types/node**: ^20
+- **@types/react**: ^18
+- **@types/react-dom**: ^18
+- **jest**: ^29.7.0
+- **jest-environment-jsdom**: ^29.7.0
+- **postcss**: ^8
+- **tailwindcss**: ^3.4.1
+- **ts-node**: ^10.9.2
+- **typescript**: ^5
 
 ## Features
 

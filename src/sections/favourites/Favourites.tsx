@@ -4,6 +4,7 @@ import ListSkeleton from "@/components/list-skeleton/ListSkeleton";
 import NoFavourites from "@/components/no-favourites/NoFavourites";
 import PokemonCard from "@/components/pokemon-card/PokemonCard";
 import { useFavouritesContext } from "@/providers/FavouriteContextProvider";
+import { Heart } from "lucide-react";
 import React from "react";
 
 /**
@@ -45,8 +46,14 @@ function Favourites() {
   if (favourites?.length == 0) return <NoFavourites />;
 
   return (
-    <section className="min-h-[90vh]">
-      <div className="p-5 md:px-16 md:py-2 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+    <section className="min-h-[90vh] p-5 md:px-16 md:py-2">
+      <div className="flex gap-4 mb-4 md:mb-8">
+        <h1 className="text-2xl font-bold tracking-tight lg:text-3xl">
+          Favourites List
+        </h1>
+        <Heart className="text-red-500 h-9 w-9 fill-current" />
+      </div>
+      <div className=" grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {!loading &&
           favouritesListDetails
             .filter((list) => favourites.indexOf(list.id) > -1)
