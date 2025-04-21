@@ -24,6 +24,9 @@ Below is a comprehensive overview of the project, including the file structure, 
    - [Dev Dependencies](#dev-dependencies)
 5. [Features](#features)
 6. [Functional and Technical Requirements](#functional-and-technical-requirements)
+   - [Functional requirements Accomplished](#functional-requirements-accomplished)
+   - [Technical requirements Accomplished](#technical-requirements-accomplished)
+7. [Future improvements](#future-improvements)
 
 ---
 
@@ -312,7 +315,7 @@ if there are no favourites added there will be a placeholder page as shown below
 
 ## Functional and Technical Requirements
 
-### Functional requirements - Accomplished:
+### Functional requirements Accomplished
 
 - [x] The user should be able to see a main screen with a list of all Pokémons (with corresponding name and image for each of them).
 - [x] In the main page: apply pagination in the list of Pokémons.
@@ -321,7 +324,7 @@ if there are no favourites added there will be a placeholder page as shown below
 - [x] In the Pokémon detail page, the user should be able to favorite the Pokémon.
 - [x] From the main page, the user should be able to navigate to another page. This page should contain a list of the favorite Pokémons (with corresponding name and image for each of them).
 
-### Technical requiremnts - Accomplished
+### Technical requiremnts Accomplished
 
 - [x] The application should be implemented in React.
 - [x] To get the list of Pókemons and their details, use the PokéAPI: https://pokeapi.co/ (see documentation for more details).
