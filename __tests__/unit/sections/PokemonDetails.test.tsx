@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import PokemonDetails from "@/sections/pokemon-details/PokemonDetails";
 import { useGlobalContext } from "@/providers/GlobalContextProvider";
 import { useFavouritesContext } from "@/providers/FavouriteContextProvider";
-import { mockPokemonDetails } from "../../mockData/pokemon";
+import { mockPokemonDetails } from "../../__mockdata__/pokemon";
 
 jest.mock("@/providers/GlobalContextProvider", () => ({
   useGlobalContext: jest.fn(),

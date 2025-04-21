@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { usePokemonData } from "@/hooks/usePokemonData";
 import { getPokemons } from "@/actions/get-pokemons";
-import { mockPokemonAPIResponse } from "../../mockData/pokemon";
+import { mockPokemonAPIResponse } from "../../__mockdata__/pokemon";
 
 jest.mock("axios");
 jest.mock("@/actions/get-pokemons");

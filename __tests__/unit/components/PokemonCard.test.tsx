@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { useRouter } from "next/navigation";
 import PokemonCard from "@/components/pokemon-card/PokemonCard";
 import { PokemonDetails } from "@/types/pokemon";
-import { mockPokemonDetails } from "../../mockData/pokemon";
+import { mockPokemonDetails } from "../../__mockdata__/pokemon";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),

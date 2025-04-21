@@ -1,6 +1,6 @@
 import { getPokemonsById } from "@/actions/get-pokemons-by-id";
 import axios from "axios";
-import { mockPokemonDetails } from "../../mockData/pokemon";
+import { mockPokemonDetails } from "../../__mockdata__/pokemon";
 import { BASE_API_URL } from "@/constants/api";
 
 jest.mock("axios");

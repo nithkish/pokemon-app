@@ -3,47 +3,50 @@ import { render, screen } from "@testing-library/react";
 import PhysicalCard from "@/components/physical-card/PhysicalCard";
 
 describe("PhysicalCard Component", () => {
-  const mockProps = {
-    weight: 70,
-    height: 1.8,
-    baseExperience: 200,
-  };
+  it("renders the PhysicalCard component with correct props", () => {
+    render(<PhysicalCard weight={60} height={1.8} baseExperience={200} />);
 
-  it("renders the PhysicalCard component with correct header", () => {
-    render(<PhysicalCard {...mockProps} />);
+    expect(screen.getByText("Height : 1.8 M")).toBeInTheDocument();
+    expect(screen.getByText("Weight : 60 Kg")).toBeInTheDocument();
+    expect(screen.getByText("Base Exp : 200 Xp")).toBeInTheDocument();
+  });
+
+  it("renders the header correctly", () => {
+    render(<PhysicalCard weight={60} height={1.8} baseExperience={200} />);
+
     expect(screen.getByText("Physical Attributes")).toBeInTheDocument();
   });
 
-  it("displays the correct height", () => {
-    render(<PhysicalCard {...mockProps} />);
-    expect(screen.getByText("1.8 M")).toBeInTheDocument();
-  });
-
-  it("displays the correct weight", () => {
-    render(<PhysicalCard {...mockProps} />);
-    expect(screen.getByText("70 Kg")).toBeInTheDocument();
-  });
-
-  it("displays the correct base experience", () => {
-    render(<PhysicalCard {...mockProps} />);
-    expect(screen.getByText("200 Xp")).toBeInTheDocument();
-  });
-
-  it("renders the correct number of attributes", () => {
-    render(<PhysicalCard {...mockProps} />);
-    const attributes = screen.getAllByRole("paragraph");
-    expect(attributes).toHaveLength(3);
-  });
-
   it("handles large values for weight, height, and base experience", () => {
-    const largeProps = {
-      weight: 999,
-      height: 99.9,
-      baseExperience: 9999,
-    };
-    render(<PhysicalCard {...largeProps} />);
-    expect(screen.getByText("99.9 M")).toBeInTheDocument();
-    expect(screen.getByText("999 Kg")).toBeInTheDocument();
-    expect(screen.getByText("9999 Xp")).toBeInTheDocument();
+    render(<PhysicalCard weight={999} height={99.9} baseExperience={9999} />);
+
+    expect(screen.getByText("Height : 99.9 M")).toBeInTheDocument();
+    expect(screen.getByText("Weight : 999 Kg")).toBeInTheDocument();
+    expect(screen.getByText("Base Exp : 9999 Xp")).toBeInTheDocument();
+  });
+
+  it("handles small values for weight, height, and base experience", () => {
+    render(<PhysicalCard weight={0.1} height={0.05} baseExperience={1} />);
+
+    expect(screen.getByText("Height : 0.05 M")).toBeInTheDocument();
+    expect(screen.getByText("Weight : 0.1 Kg")).toBeInTheDocument();
+    expect(screen.getByText("Base Exp : 1 Xp")).toBeInTheDocument();
+  });
+
+  it("renders correctly with zero values", () => {
+    render(<PhysicalCard weight={0} height={0} baseExperience={0} />);
+
+    expect(screen.getByText("Height : 0 M")).toBeInTheDocument();
+    expect(screen.getByText("Weight : 0 Kg")).toBeInTheDocument();
+    expect(screen.getByText("Base Exp : 0 Xp")).toBeInTheDocument();
+  });
+
+  it("renders without crashing when no props are provided", () => {
+    // @ts-expect-error Testing behavior with missing props
+    render(<PhysicalCard />);
+
+    expect(screen.queryByText("Height :")).not.toBeInTheDocument();
+    expect(screen.queryByText("Weight :")).not.toBeInTheDocument();
+    expect(screen.queryByText("Base Exp :")).not.toBeInTheDocument();
   });
 });

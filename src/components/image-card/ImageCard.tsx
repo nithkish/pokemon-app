@@ -52,6 +52,7 @@ function ImageCard({ src, name, id }: ImageCardProps) {
             }`}
             onClick={handleFavouriteClick}
             aria-label="Add to Favourites Button"
+            data-testid="favourite-button"
           />
           {/* This span is visually hidden but provides an accessible label for screen readers */}
           {/* The "sr-only" class hides the text visually but keeps it accessible */}

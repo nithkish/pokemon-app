@@ -34,10 +34,8 @@ describe("ImageCard Component", () => {
   it("shows the heart icon as unfilled when the item is not a favourite", () => {
     render(<ImageCard src="/test-image.png" name="Pikachu" id={1} />);
 
-    const heartIcon = screen
-      .getByLabelText("Favourites Button")
-      .querySelector("svg");
-    expect(heartIcon).not.toHaveAttribute("fill", "red");
+    const heartIcon = screen.getByTestId("favourite-button");
+    expect(heartIcon).not.toHaveClass("fill-current");
   });
 
   it("shows the heart icon as filled when the item is a favourite", () => {
@@ -49,16 +47,14 @@ describe("ImageCard Component", () => {
 
     render(<ImageCard src="/test-image.png" name="Pikachu" id={1} />);
 
-    const heartIcon = screen
-      .getByLabelText("Favourites Button")
-      .querySelector("svg");
-    expect(heartIcon).toHaveAttribute("fill", "red");
+    const heartIcon = screen.getByTestId("favourite-button");
+    expect(heartIcon).toHaveClass("fill-current");
   });
 
   it("calls addFavourite when the heart button is clicked and the item is not a favourite", () => {
     render(<ImageCard src="/test-image.png" name="Pikachu" id={1} />);
 
-    const button = screen.getByLabelText("Favourites Button");
+    const button = screen.getByTestId("favourite-button");
     fireEvent.click(button);
 
     expect(mockAddFavourite).toHaveBeenCalledWith(1);
@@ -73,7 +69,7 @@ describe("ImageCard Component", () => {
 
     render(<ImageCard src="/test-image.png" name="Pikachu" id={1} />);
 
-    const button = screen.getByLabelText("Favourites Button");
+    const button = screen.getByTestId("favourite-button");
     fireEvent.click(button);
 
     expect(mockRemoveFavourite).toHaveBeenCalledWith(1);

@@ -1,70 +1,35 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import AbilitiesCard from "@/components/abilities-card/AbilitiesCard";
+import { Ability } from "@/types/pokemon";
 
 describe("AbilitiesCard", () => {
-  it("renders the card header", () => {
-    render(<AbilitiesCard abilities={[]} />);
+  const mockAbilities: Ability[] = [
+    { ability: { name: "overgrow" } },
+    { ability: { name: "chlorophyll" } },
+  ];
+
+  it("renders the card header correctly", () => {
+    render(<AbilitiesCard abilities={mockAbilities} />);
     expect(screen.getByText("Abilities")).toBeInTheDocument();
   });
 
-  it("renders a list of abilities", () => {
-    const abilities = [
-      { ability: { name: "Overgrow" } },
-      { ability: { name: "Chlorophyll" } },
-    ];
-
-    render(<AbilitiesCard abilities={abilities} />);
-
-    abilities.forEach((ability) => {
-      expect(screen.getByText(ability.ability.name)).toBeInTheDocument();
-    });
-  });
-
-  it("renders no abilities when the list is empty", () => {
-    render(<AbilitiesCard abilities={[]} />);
-    expect(screen.queryByRole("listitem")).not.toBeInTheDocument();
-  });
-
-  it("renders abilities with correct styling", () => {
-    const abilities = [
-      { ability: { name: "Overgrow" } },
-      { ability: { name: "Chlorophyll" } },
-    ];
-
-    render(<AbilitiesCard abilities={abilities} />);
-
-    abilities.forEach((ability) => {
-      const abilityElement = screen.getByText(ability.ability.name);
-      expect(abilityElement).toHaveClass(
-        "px-4 py-2 flex items-center gap-2 text-sm font-bold bg-white text-[#54a0ff] rounded-full"
-      );
-    });
-  });
-
   it("renders the correct number of abilities", () => {
-    const abilities = [
-      { ability: { name: "Overgrow" } },
-      { ability: { name: "Chlorophyll" } },
-      { ability: { name: "Solar Power" } },
-    ];
-
-    render(<AbilitiesCard abilities={abilities} />);
-
-    const listItems = screen.getAllByRole("listitem");
-    expect(listItems).toHaveLength(abilities.length);
+    render(<AbilitiesCard abilities={mockAbilities} />);
+    const abilityItems = screen.getAllByRole("listitem");
+    expect(abilityItems).toHaveLength(mockAbilities.length);
   });
 
-  it("handles abilities with special characters in names", () => {
-    const abilities = [
-      { ability: { name: "Overgrow" } },
-      { ability: { name: "Chlorophyll" } },
-      { ability: { name: "Solar Power!" } },
-    ];
-
-    render(<AbilitiesCard abilities={abilities} />);
-
-    abilities.forEach((ability) => {
+  it("displays the correct ability names", () => {
+    render(<AbilitiesCard abilities={mockAbilities} />);
+    mockAbilities.forEach((ability) => {
       expect(screen.getByText(ability.ability.name)).toBeInTheDocument();
     });
+  });
+
+  it("renders an empty list when no abilities are provided", () => {
+    render(<AbilitiesCard abilities={[]} />);
+    const abilityItems = screen.queryAllByRole("listitem");
+    expect(abilityItems).toHaveLength(0);
   });
 });

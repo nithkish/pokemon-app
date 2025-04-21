@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import TypesCard from "@/components/types-card/TypesCard";
 import { Type } from "@/types/pokemon";
-import { mockTypes } from "../../mockData/pokemon";
+import { mockTypes } from "../../__mockdata__/pokemon";
 
 describe("TypesCard Component", () => {
   it("renders the TypesCard component with the correct header", () => {
