@@ -68,26 +68,28 @@ function PokemonDetails({ id }: PokemonDetailsProps) {
   }
 
   return (
-    <main>
-      <section className="p-5 min-h-[60vh]  grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="relative flex flex-col gap-4">
-          <ImageCard
-            src={pokemonDetails.sprites.other.home.front_default}
-            name={pokemonDetails.name}
-            id={pokemonDetails.id}
-          />
+    <main className="p-5 md:p-0 flex flex-col justify-start gap-4 min-h-[90vh]">
+      <section>
+        <div className=" md:p-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className=" flex flex-col  gap-4">
+            <ImageCard
+              src={pokemonDetails.sprites.other.home.front_default}
+              name={pokemonDetails.name}
+              id={pokemonDetails.id}
+            />
+            <TypesCard types={pokemonDetails.types} />
+          </div>
+          <div className="flex flex-col gap-4">
+            <BaseStatsCard stats={pokemonDetails.stats} />
+            <AbilitiesCard abilities={pokemonDetails.abilities} />
+          </div>
+        </div>
+        <div className="py-4 md:p-2">
           <PhysicalCard
             weight={pokemonDetails.weight}
             height={pokemonDetails.height}
             baseExperience={pokemonDetails.base_experience}
           />
-        </div>
-        <div className="flex flex-col justify-center gap-6">
-          <BaseStatsCard stats={pokemonDetails.stats} />
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <AbilitiesCard abilities={pokemonDetails.abilities} />
-            <TypesCard types={pokemonDetails.types} />
-          </div>
         </div>
       </section>
     </main>

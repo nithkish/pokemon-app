@@ -25,23 +25,23 @@ interface PhysicalCardProps {
 function PhysicalCard({ weight, height, baseExperience }: PhysicalCardProps) {
   return (
     <CardWrapper header={"Physical Attributes"}>
-      <div className="flex justify-between">
-        <p className="px-4 py-2 flex  items-center justify-center text-gray-600 font-bold bg-white rounded-lg">
+      <div className="flex flex-col md:flex-row justify-between">
+        <p className="px-4 py-2 flex  items-center justify-center text-gray-600 dark:text-white font-bold border-2  rounded-lg">
           <span className="text-sm flex items-center gap-2">
             <Ruler size={18} />
-            {`${height} M`}
+            {`Height : ${height} M`}
           </span>
         </p>
-        <p className="px-4 py-2 flex  items-center justify-center  text-gray-600 font-bold bg-white rounded-lg">
+        <p className="px-4 py-2 flex  items-center justify-center  text-gray-600 dark:text-white font-bold border-2 rounded-lg">
           <span className="text-sm flex items-center gap-2">
             <Weight size={18} />
-            {`${weight} Kg`}
+            {`Weight : ${weight} Kg`}
           </span>
         </p>
-        <p className="px-4 py-2 flex  items-center justify-center  text-gray-600 font-bold bg-white rounded-lg">
+        <p className="px-4 py-2 flex  items-center justify-center  text-gray-600 dark:text-white font-bold border-2 rounded-lg">
           <span className="text-sm flex items-center gap-2">
             <Zap size={18} />
-            {`${baseExperience} Xp`}
+            {`Base Exp : ${baseExperience} Xp`}
           </span>
         </p>
       </div>

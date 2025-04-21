@@ -35,12 +35,15 @@ function BaseStatsCard({ stats }: BaseStatsCardProps) {
   return (
     <CardWrapper header={"Base Statistics"}>
       <div className="flex flex-col gap-2">
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-4 pt-3">
           {stats.map((stat: any, index: number) => (
             <li key={index} className="flex flex-col gap-1">
               <span className="capitalize">{stat.stat.name}</span>
               <div className="flex items-center gap-4">
-                <Progress value={stat.base_stat} />
+                <Progress
+                  className="[&>*]:bg-indigo-600"
+                  value={stat.base_stat}
+                />
                 <span className="font-bold">{stat.base_stat}</span>
               </div>
             </li>

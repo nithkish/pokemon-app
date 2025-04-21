@@ -45,8 +45,8 @@ function Favourites() {
   if (favourites?.length == 0) return <NoFavourites />;
 
   return (
-    <section className="min-h-[91vh]">
-      <div className="px-16 py-8 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <section className="min-h-[90vh]">
+      <div className="p-5 md:px-16 md:py-2 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {!loading &&
           favouritesListDetails
             .filter((list) => favourites.indexOf(list.id) > -1)

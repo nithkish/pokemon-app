@@ -40,7 +40,7 @@ export default function RootLayout({
         >
           <div className="min-h-screen">
             <NavBar />
-            <main className="py-8">
+            <main className="md:py-10 bg-gray-100 dark:bg-gray-950">
               <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   <div className="lg:col-span-12">

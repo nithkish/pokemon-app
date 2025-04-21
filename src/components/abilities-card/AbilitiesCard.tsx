@@ -24,11 +24,11 @@ function AbilitiesCard({ abilities }: AbilitiesCardProps) {
   return (
     <CardWrapper header={"Abilities"}>
       <div className="flex flex-col gap-2">
-        <ul className="flex gap-2">
+        <ul className="flex md:flex-row flex-col gap-2">
           {abilities.map((ability: any, index: number) => (
             <li
               key={index}
-              className="px-4 py-2 flex items-center gap-2 text-sm font-bold bg-white text-[#54a0ff] rounded-full"
+              className="px-4 uppercase py-2 flex items-center gap-2 text-sm font-bold border-2 rounded-full"
             >
               {ability.ability.name}
             </li>

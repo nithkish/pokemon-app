@@ -23,7 +23,7 @@ function PaginationComponent({ pageCount }: PaginationProps) {
   const { currentPage, setCurrentPage } = useGlobalContext();
 
   return (
-    <Pagination>
+    <Pagination className="pt-4 pb-8 md:p-6">
       <PaginationContent>
         <PaginationItem>
           <PaginationArrow
@@ -33,7 +33,7 @@ function PaginationComponent({ pageCount }: PaginationProps) {
           />
         </PaginationItem>
         <PaginationItem>
-          <span className="p-2 mx-5 font-bold text-gray-500 dark:text-white">
+          <span className="p-3 mx-5 font-bold text-white bg-indigo-600 dark:bg-slate-800 h-10 w-12 rounded-full">
             {currentPage}
           </span>
         </PaginationItem>

@@ -44,20 +44,19 @@ function ImageCard({ src, name, id }: ImageCardProps) {
         <div className="font-semibold tracking-tight text-3xl capitalize">
           {name}
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={handleFavouriteClick}
-          aria-label="Favourites Button"
-        >
+
+        <div>
           <Heart
-            fill={isFavourite ? "red" : "white dark:black"}
-            className="text-red-500"
+            className={`text-red-500 h-10 w-10 cursor-pointer ${
+              isFavourite ? "fill-current" : ""
+            }`}
+            onClick={handleFavouriteClick}
+            aria-label="Add to Favourites Button"
           />
           {/* This span is visually hidden but provides an accessible label for screen readers */}
           {/* The "sr-only" class hides the text visually but keeps it accessible */}
           <span className="sr-only">Favourites Button</span>
-        </Button>
+        </div>
       </div>
 
       <div className="flex justify-center">

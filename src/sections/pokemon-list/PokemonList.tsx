@@ -35,14 +35,14 @@ export default function PokemonList() {
   return (
     <>
       <section className="min-h-[91vh]">
-        <div className="px-16 py-8 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="p-5 md:px-16 md:py-2 grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {!loading &&
             pokemonListDetails.map((pokemon: any, index: number) => {
               return <PokemonCard key={index} pokemon={pokemon} />;
             })}
         </div>
+        {maxPage && <PaginationComponent pageCount={maxPage} />}
       </section>
-      {maxPage && <PaginationComponent pageCount={maxPage} />};
     </>
   );
 }

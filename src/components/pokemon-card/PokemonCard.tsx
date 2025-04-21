@@ -29,7 +29,7 @@ function PokemonCard({ pokemon }: PokemonCardProps) {
 
   return (
     <Card
-      className="bg-zinc-950 dark:bg-white"
+      className="bg-indigo-600 dark:bg-slate-950 hover:bg-indigo-500 hover:dark:bg-slate-900 shadow-sm cursor-pointer"
       onClick={handleClick}
       data-testid={"pokemon-card"}
       aria-label={pokemon?.name}
@@ -45,7 +45,7 @@ function PokemonCard({ pokemon }: PokemonCardProps) {
             height={150}
           />
         </div>
-        <h2 className="text-2xl text-white dark:text-gray-800 capitalize font-bold text-center">
+        <h2 className="text-2xl text-gray-200 capitalize font-bold text-center">
           {pokemon?.name}
         </h2>
       </CardContent>

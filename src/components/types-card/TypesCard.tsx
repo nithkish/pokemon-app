@@ -1,6 +1,7 @@
 import React from "react";
 import CardWrapper from "../card-wrapper/CardWrapper";
 import { Type } from "@/types/pokemon";
+import { typeColor } from "@/constants/colors";
 
 interface TypesCardPorps {
   types: Type[];
@@ -21,10 +22,11 @@ function TypesCard({ types }: TypesCardPorps) {
     <CardWrapper header={"Types"}>
       <div className="flex flex-col gap-2">
         <ul className="flex flex-wrap gap-2">
-          {types.map((type: any, index: number) => (
+          {types.map((type: Type, index: number) => (
             <li
               key={index}
-              className="px-4 py-2 flex items-center gap-2 text-sm font-bold bg-zinc-700 text-white rounded-full"
+              className="px-4 py-2 uppercase flex items-center gap-2 text-sm font-bold text-white rounded-full"
+              style={{ backgroundColor: typeColor[type?.type?.name] }}
             >
               {type.type.name}
             </li>

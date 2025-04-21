@@ -32,9 +32,9 @@ function NavButtons() {
     <div className="flex items-center space-x-4">
       {navButtons.map((button) => (
         <Button
+          variant="outline"
           key={button.name}
-          variant="destructive"
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 bg-indigo-600 text-gray-100 hover:text-gray-50 hover:bg-indigo-500 dark:bg-slate-900 dark:hover:bg-slate-800"
           asChild
         >
           <Link href={button.href}>
