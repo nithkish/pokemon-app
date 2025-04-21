@@ -3,10 +3,18 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ToggleTheme from "@/components/toggle-theme/ToggleTheme";
 
-export function NavButtons() {
+/**
+ * @description A functional React component that renders a set of navigation buttons and a theme toggle button.
+ * The navigation buttons are dynamically generated from a predefined array of button configurations.
+ *
+ * @returns {JSX.Element} A JSX element containing navigation buttons and a theme toggle button.
+ *
+ */
+function NavButtons() {
   // Define an array of navigation buttons with their properties
   // This array can be easily extended to add more buttons in the future
   // Each button has a name, icon, and href (link)
+  // Can be moved to a central config file for scalability
   const navButtons = [
     {
       name: "Home",
@@ -21,8 +29,6 @@ export function NavButtons() {
   ];
 
   return (
-    // Render the navigation buttons
-    // Each button is created using the Button component
     <div className="flex items-center space-x-4">
       {navButtons.map((button) => (
         <Button

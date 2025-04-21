@@ -3,6 +3,21 @@ import React from "react";
 import CardWrapper from "../card-wrapper/CardWrapper";
 import { Progress } from "../ui/progress";
 
+/**
+ * This component renders a card displaying the base statistics of a Pokémon.
+ * It uses a `CardWrapper` component to provide a styled container and a `Progress` component
+ * to visually represent the value of each statistic.
+ *
+ * Props:
+ * - `stats`: An array of objects representing the Pokémon's base stats. Each object should
+ *   have the following structure:
+ *   - `stat`: An object containing the name of the stat (e.g., "hp", "attack").
+ *   - `base_stat`: A number representing the value of the stat.
+ *
+ * If the `stats` array is empty or not provided, the component displays a message indicating
+ * that no stats are available.
+ * ```
+ */
 interface BaseStatsCardProps {
   stats: Stats[];
 }

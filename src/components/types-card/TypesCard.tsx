@@ -6,6 +6,16 @@ interface TypesCardPorps {
   types: Type[];
 }
 
+/**
+ * A React component that displays a list of Pokémon types inside a styled card wrapper.
+ *
+ * @component
+ * @param {TypesCardPorps} props - The props for the TypesCard component.
+ * @param {Type[]} props.types - An array of Pokémon types to be displayed.
+ *
+ * @returns {JSX.Element} A styled card component containing a list of Pokémon types.
+ *
+ */
 function TypesCard({ types }: TypesCardPorps) {
   return (
     <CardWrapper header={"Types"}>

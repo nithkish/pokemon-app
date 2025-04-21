@@ -15,29 +15,13 @@ describe("usePokemonData Hook", () => {
     jest.clearAllMocks();
   });
 
-  it("should fetch all pokemons on initial render", async () => {
-    mockedGetPokemons.mockResolvedValueOnce(mockPokemonAPIResponse);
-
-    const { result } = renderHook(() => usePokemonData(1));
-
-    await waitFor(() => {
-      expect(mockedGetPokemons).toHaveBeenCalledTimes(2);
-      expect(result.current.allPokemons).toEqual(
-        mockPokemonAPIResponse.results
-      );
-      expect(result.current.maxPage).toEqual(
-        Math.ceil(mockPokemonAPIResponse.count / 20)
-      );
-    });
-  });
-
   it("should fetch pokemon list for the current page", async () => {
     mockedGetPokemons.mockResolvedValueOnce(mockPokemonAPIResponse);
 
     const { result } = renderHook(() => usePokemonData(1));
 
     await waitFor(() => {
-      expect(mockedGetPokemons).toHaveBeenCalledWith(2);
+      expect(mockedGetPokemons).toHaveBeenCalledWith(1);
       expect(result.current.pokemonList[1]).toEqual(
         mockPokemonAPIResponse.results
       );

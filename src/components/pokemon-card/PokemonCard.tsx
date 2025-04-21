@@ -1,7 +1,7 @@
 "use client";
 import { PokemonDetails } from "@/types/pokemon";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 
@@ -9,9 +9,17 @@ interface PokemonCardProps {
   pokemon: PokemonDetails;
 }
 
-// This component is used to display the pokemon card
-// It takes the pokemon details as props and displays the image and name of the pokemon
-// It also handles the click event to navigate to the pokemon details page
+/**
+ * A React component that displays a card for a Pokémon with its image and name.
+ * Clicking on the card navigates to the Pokémon's details page.
+ *
+ * @component
+ * @param {PokemonCardProps} props - The props for the component.
+ * @param {PokemonDetails} props.pokemon - The details of the Pokémon to display.
+ *
+ *
+ * @returns {JSX.Element} A card component displaying the Pokémon's image and name.
+ */
 function PokemonCard({ pokemon }: PokemonCardProps) {
   const router = useRouter();
 

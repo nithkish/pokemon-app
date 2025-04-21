@@ -1,5 +1,16 @@
 import { Button } from "../ui/button";
 
+/**
+ * A functional component that renders a pagination arrow button.
+ *
+ * @param {Object} props - The props for the PaginationArrow component.
+ * @param {"left" | "right"} props.direction - The direction of the arrow, either "left" or "right".
+ * @param {() => void} props.onClick - The callback function to handle the button click event.
+ * @param {boolean} props.isDisabled - A flag indicating whether the button is disabled.
+ *
+ * @returns {JSX.Element} A button styled as a pagination arrow.
+ *
+ */
 export const PaginationArrow = ({
   direction,
   onClick,

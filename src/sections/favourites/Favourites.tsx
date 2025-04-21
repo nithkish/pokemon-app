@@ -6,6 +6,33 @@ import PokemonCard from "@/components/pokemon-card/PokemonCard";
 import { useFavouritesContext } from "@/providers/FavouriteContextProvider";
 import React from "react";
 
+/**
+ * The `Favourites` component used for displaying the favourites section,
+ * is responsible for rendering the user's favorite Pokémon.
+ * It utilizes the `useFavouritesContext` hook to access the list of favorite Pokémon,
+ * their details, and the loading/error states.
+ *
+ * @component
+ *
+ * @returns {JSX.Element} The rendered component displaying the favorite Pokémon or
+ * appropriate fallback UI based on the state.
+ *
+ * @remarks
+ * - Displays a loading skeleton (`ListSkeleton`) while data is being fetched.
+ * - Shows an error screen (`ErrorScreen`) if there is an error during data fetching.
+ * - Renders a `NoFavourites` component if the user has no favorite Pokémon.
+ * - Displays a grid of `PokemonCard` components for each favorite Pokémon.
+ *
+ * @hook
+ * - `useFavouritesContext`: Provides access to the `favouritesListDetails`, `error`,
+ *   `loading`, and `favourites` states.
+ *
+ * @dependencies
+ * - `ListSkeleton`: A component to show a loading state.
+ * - `ErrorScreen`: A component to display an error message.
+ * - `NoFavourites`: A component to indicate no favorite Pokémon are available.
+ * - `PokemonCard`: A component to display individual Pokémon details.
+ */
 function Favourites() {
   const { favouritesListDetails, error, loading, favourites } =
     useFavouritesContext();

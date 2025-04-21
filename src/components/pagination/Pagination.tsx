@@ -4,11 +4,22 @@ import {
   PaginationContent,
   PaginationItem,
 } from "@/components/ui/pagination";
-
 import { PaginationArrow } from "./PaginationArrow";
 import { useGlobalContext } from "@/providers/GlobalContextProvider";
 
-export function PaginationComponent({ pageCount }: PaginationProps) {
+/**
+ * PaginationComponent is a React component that renders a pagination UI
+ * with navigation arrows and the current page number. It uses the global
+ * context to manage the current page state.
+ *
+ * @param {PaginationProps} props - The props for the PaginationComponent.
+ * @param {number} props.pageCount - The total number of pages available for pagination.
+ *
+ * @returns {JSX.Element} The rendered pagination component.
+ *
+ * ```
+ */
+function PaginationComponent({ pageCount }: PaginationProps) {
   const { currentPage, setCurrentPage } = useGlobalContext();
 
   return (

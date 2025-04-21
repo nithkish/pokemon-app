@@ -11,6 +11,21 @@ interface ImageCardProps {
   id: number;
 }
 
+/**
+ * ImageCard Component
+ *
+ * This component renders a card displaying an image, a name, and a button to toggle the "favourite" status.
+ * It uses the `useFavouritesContext` to manage the favourite state of the item.
+ *
+ * @component
+ * @param {ImageCardProps} props - The props for the ImageCard component.
+ * @param {string} props.src - The source URL of the image to be displayed.
+ * @param {string} props.name - The name of the item to be displayed.
+ * @param {number} props.id - The unique identifier for the item.
+ *
+ * @returns {JSX.Element} A card component displaying an image, name, and a favourite toggle button.
+ *
+ */
 function ImageCard({ src, name, id }: ImageCardProps) {
   const [isFavourite, setIsFavourite] = useState(false);
   const { favourites, addFavourite, removeFavourite } = useFavouritesContext();

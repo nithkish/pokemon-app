@@ -2,10 +2,24 @@ import React from "react";
 import CardWrapper from "../card-wrapper/CardWrapper";
 import { Ability } from "@/types/pokemon";
 
+/**
+ * Props for the AbilitiesCard component.
+ *
+ * @interface AbilitiesCardProps
+ * @property {Ability[]} abilities - An array of Pokémon abilities to be displayed.
+ */
 interface AbilitiesCardProps {
   abilities: Ability[];
 }
 
+/**
+ * Abilities Card Component
+ *
+ * @param {AbilitiesCardProps} props - The props for the component.
+ * @param {Ability[]} props.abilities - An array of Pokémon abilities to be displayed.
+ * @returns {JSX.Element} A styled card displaying the Pokémon abilities.
+ *
+ */
 function AbilitiesCard({ abilities }: AbilitiesCardProps) {
   return (
     <CardWrapper header={"Abilities"}>

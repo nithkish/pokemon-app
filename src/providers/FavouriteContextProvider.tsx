@@ -26,10 +26,23 @@ export const FavouriteContext = createContext<FavouriteContextType>({
   error: "",
 });
 
-// This component manages the state of the favourites
-// It uses localStorage to persist the favourites
-// across page reloads and sessions
-// It also provides functions to add and remove favourites
+/**
+ * FavouriteContextProvider is a React context provider component that manages
+ * the state and functionality for handling a list of favourite Pokémon.
+ *
+ * This component initializes the favourites state from localStorage, persists
+ * updates to localStorage, and provides functions to add or remove favourites.
+ * It also fetches Pokémon details for the favourites and makes them available
+ * to the consuming components.
+ *
+ * @param {Object} props - The props for the component.
+ * @param {ReactNode} props.children - The child components that will have access
+ * to the context.
+ *
+ * @returns {JSX.Element} A context provider that wraps its children and provides
+ * the favourites state, functions to modify it, and additional data such as
+ * loading and error states.
+ */
 export const FavouriteContextProvider = ({
   children,
 }: {

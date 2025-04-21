@@ -23,6 +23,37 @@ interface PokemonDetailsProps {
   id: number;
 }
 
+/**
+ * Component to display detailed information about a specific Pokémon.
+ *
+ * @component
+ * @param {PokemonDetailsProps} props - The props for the component.
+ * @param {string | number} props.id - The ID of the Pokémon to display details for.
+ *
+ * @returns {JSX.Element} The rendered Pokémon details component.
+ *
+ * @description
+ * This component fetches the Pokémon details by combining the `pokemonListDetails`
+ * and `favouritesListDetails` from the global and favourites contexts, respectively.
+ * It ensures uniqueness of Pokémon by their `id` and finds the specific Pokémon
+ * matching the provided `id`. If no Pokémon is found, it renders an `ErrorScreen`.
+ *
+ * The component displays the following details about the Pokémon:
+ * - An image card with the Pokémon's sprite, name, and ID.
+ * - Physical attributes such as weight, height, and base experience.
+ * - Base stats, abilities, and types.
+ *
+ *
+ * @requires useGlobalContext - To access the global Pokémon list details.
+ * @requires useFavouritesContext - To access the favourites Pokémon list details.
+ * @requires uniqBy - To ensure uniqueness of Pokémon by their `id`.
+ * @requires ErrorScreen - To display an error screen if no Pokémon is found.
+ * @requires ImageCard - To display the Pokémon's image and basic details.
+ * @requires PhysicalCard - To display the Pokémon's physical attributes.
+ * @requires BaseStatsCard - To display the Pokémon's base stats.
+ * @requires AbilitiesCard - To display the Pokémon's abilities.
+ * @requires TypesCard - To display the Pokémon's types.
+ */
 function PokemonDetails({ id }: PokemonDetailsProps) {
   const { pokemonListDetails } = useGlobalContext();
   const { favouritesListDetails } = useFavouritesContext();

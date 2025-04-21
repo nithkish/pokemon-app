@@ -1,6 +1,5 @@
 import { Ruler, Weight, Zap } from "lucide-react";
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CardWrapper from "../card-wrapper/CardWrapper";
 
 interface PhysicalCardProps {
@@ -9,6 +8,20 @@ interface PhysicalCardProps {
   baseExperience: number;
 }
 
+/**
+ * A React functional component that displays the physical attributes of a Pokémon,
+ * including its weight, height, and base experience. The component uses a card layout
+ * with icons and labels for each attribute.
+ *
+ * @component
+ * @param {PhysicalCardProps} props - The properties for the PhysicalCard component.
+ * @param {number} props.weight - The weight of the Pokémon in kilograms.
+ * @param {number} props.height - The height of the Pokémon in meters.
+ * @param {number} props.baseExperience - The base experience points of the Pokémon.
+ *
+ * @returns {JSX.Element} A styled card component displaying the Pokémon's physical attributes.
+ *
+ */
 function PhysicalCard({ weight, height, baseExperience }: PhysicalCardProps) {
   return (
     <CardWrapper header={"Physical Attributes"}>
