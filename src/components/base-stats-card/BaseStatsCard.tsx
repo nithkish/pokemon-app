@@ -43,6 +43,7 @@ function BaseStatsCard({ stats }: BaseStatsCardProps) {
                 <Progress
                   className="[&>*]:bg-indigo-600"
                   value={stat.base_stat}
+                  aria-label={`${stat.stat.name} is ${stat.base_stat}`}
                 />
                 <span className="font-bold">{stat.base_stat}</span>
               </div>
