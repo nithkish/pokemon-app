@@ -23,6 +23,7 @@ Below is a comprehensive overview of the project, including the file structure, 
    - [Dependencies](#dependencies)
    - [Dev Dependencies](#dev-dependencies)
 5. [Features](#features)
+6. [Functional and Technical Requirements](#functional-and-technical-requirements)
 
 ---
 
@@ -228,6 +229,8 @@ npm run test
 
 create-next-app is used to generate this app, with Typescript for writing codes, tailwind for styling along with shadcn reusable components. Shadcn uses radix-ui.
 
+For state management Reacts ContextAPI has been used.
+
 LocalStorage have been made use of along with other libraries.The Pokémon App leverages the following libraries and frameworks:
 
 ### Dependencies
@@ -265,8 +268,72 @@ LocalStorage have been made use of along with other libraries.The Pokémon App l
 
 ## Features
 
-- **Pokémon Browsing**: View a list of Pokémon with their names and images.
-- **Detailed Pokémon View**: Click on a Pokémon to see detailed information, including stats, abilities, and type.
-- **Responsive Design**: Optimized for both mobile and desktop devices.
+- **Pokémon Browsing**: View a list of Pokémon with their names and images. The list is pageinated, with the current page displayed at the botton along with navigation buttons to next and previous pages, as shown below.
+
+![Home Page](<docs/screenshots/Screenshot 2025-04-21 at 14.04.47.png>)
+
+- **Detailed Pokémon View**: Click on a Pokémon to see detailed information, including stats, abilities, and type. Clicking on the heart icon will add the Pokemon into the favourite list, clicking on it again will remove it from favourites. you can move to the home page, by clicking on "Home" button or "Pokemon" logo on top navigation.
+
+![Detailed Pokémon View](<docs/screenshots/Screenshot 2025-04-21 at 14.05.27.png>)
+
+- **Favourites Page**: Click on the "Favourites" button on top navigation will navigate to the favourites list page, where you can see all the pokemons added as favourites. On clicking the Pokemon card, you can see the details of them as well, and remove from favourite list and vice versa.
+
+![Favourite Page](<docs/screenshots/Screenshot 2025-04-21 at 14.19.14.png>)
+
+if there are no favourites added there will be a placeholder page as shown below.
+
+![No Favourites](<docs/screenshots/Screenshot 2025-04-21 at 14.05.48.png>)
+
+- **Dark/Light Mode**: For better accessibilty and user experience, there is button to toggle between dark and light mode on the top navigation bar. Shown below all pages in dark mode.
+
+![Home](<docs/screenshots/Screenshot 2025-04-21 at 14.05.01.png>)
+
+![Details](<docs/screenshots/Screenshot 2025-04-21 at 14.05.17.png>)
+
+![Favourites](<docs/screenshots/Screenshot 2025-04-21 at 14.19.23.png>)
+
+![No Favourites](<docs/screenshots/Screenshot 2025-04-21 at 14.20.19.png>)
+
+- **Responsive Design**: Optimized for both mobile and desktop devices. Below are samples of all pages in mobile mode.
+
+![Mobile Home](<docs/screenshots/Screenshot 2025-04-21 at 14.41.25.png>)
+
+![mobile details-1](<docs/screenshots/Screenshot 2025-04-21 at 14.43.01.png>)
+
+![mobile details-2](<docs/screenshots/Screenshot 2025-04-21 at 14.43.11.png>)
+
+![no favourites mobile](<docs/screenshots/Screenshot 2025-04-21 at 14.43.28.png>)
+
+![favourites mobile](<docs/screenshots/Screenshot 2025-04-21 at 14.43.59.png>)
+
+## Functional and Technical Requirements
+
+### Functional requirements - Accomplished:
+
+- [x] The user should be able to see a main screen with a list of all Pokémons (with corresponding name and image for each of them).
+- [x] In the main page: apply pagination in the list of Pokémons.
+- [x] From the main page, while clicking a Pokémon, the user should be able to navigate to another page containing the details of that Pokémon.
+- [x] In the Pokémon details page, the user should see at least 6 descriptions, the image and the name of one Pokémon.
+- [x] In the Pokémon detail page, the user should be able to favorite the Pokémon.
+- [x] From the main page, the user should be able to navigate to another page. This page should contain a list of the favorite Pokémons (with corresponding name and image for each of them).
+
+### Technical requiremnts - Accomplished
+
+- [x] The application should be implemented in React.
+- [x] To get the list of Pókemons and their details, use the PokéAPI: https://pokeapi.co/ (see documentation for more details).
+- [x] Usage of the local storage to handle the list of favorite Pokémons.
+- [x] Usage of any UI framework adapted to React (Examples: Bootstrap, Semantic UI).
+- [x] The app should be responsive (adapt UI so it can be displayed in different screen sizes).
+- [x] The code should contain comments.
+- [x] The application code should be submitted in GitHub.
+- [x] On the README file of GitHub, should be mentioned the following information: small description of the application, functional and technical requirements accomplished,technologies used, and the steps of installation.
+
+## Future improvements
+
+1. Adding a search bar for searching Pokemon will improve UX.
+2. Adding an options to delete favourites in the favourites list.
+3. Infinite scrolling in place of pagination for better user experience.
+4. Migration to state mangement tools like Redux or Zustand during scale up phase.
+5. DB for storing the favourites list and respective APIs for consumption.
 
 ---
