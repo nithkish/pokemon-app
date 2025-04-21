@@ -268,6 +268,10 @@ LocalStorage have been made use of along with other libraries.The Pokémon App l
 
 ## Features
 
+The application is deployed in Vercel and can be accessible to use in the below link for demo purposes.
+
+[Pokemon App](https://pokemon-app-nithkishs-projects.vercel.app/)
+
 - **Pokémon Browsing**: View a list of Pokémon with their names and images. The list is pageinated, with the current page displayed at the botton along with navigation buttons to next and previous pages, as shown below.
 
 ![Home Page](<docs/screenshots/Screenshot 2025-04-21 at 14.04.47.png>)
