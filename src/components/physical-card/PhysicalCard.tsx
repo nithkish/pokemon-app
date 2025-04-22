@@ -29,19 +29,19 @@ function PhysicalCard({ weight, height, baseExperience }: PhysicalCardProps) {
         <p className="px-4 py-2 flex  items-center justify-center text-gray-600 dark:text-white font-bold border-2  rounded-lg">
           <span className="text-sm flex items-center gap-2">
             <Ruler size={18} />
-            {`Height : ${height} M`}
+            {`Height : ${height} ft`}
           </span>
         </p>
         <p className="px-4 py-2 flex  items-center justify-center  text-gray-600 dark:text-white font-bold border-2 rounded-lg">
           <span className="text-sm flex items-center gap-2">
             <Weight size={18} />
-            {`Weight : ${weight} Kg`}
+            {`Weight : ${weight} lbs`}
           </span>
         </p>
         <p className="px-4 py-2 flex  items-center justify-center  text-gray-600 dark:text-white font-bold border-2 rounded-lg">
           <span className="text-sm flex items-center gap-2">
             <Zap size={18} />
-            {`Base Exp : ${baseExperience} Xp`}
+            {`Base Exp : ${baseExperience} xp`}
           </span>
         </p>
       </div>
